@@ -106,6 +106,20 @@ export default function Signup() {
             Already a user
           </Link>
         </form>
+        <div class="col-sm-4">
+          <div class="card social-block">
+            <div class="card-body">
+              <Link
+                class="btn btn-block"
+                to="http://localhost:5000/api/auth/google"
+                role="button"
+              >
+                <i class="fab fa-google"></i>
+                Sign Up with Google
+              </Link>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );

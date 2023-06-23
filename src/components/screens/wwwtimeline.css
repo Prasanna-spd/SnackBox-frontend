@@ -8,9 +8,9 @@
 /* html{
   scroll-behavior: smooth;
 } */
-body {
+/* body {
   background: #ff7979;
-}
+} */
 ::selection {
   color: #fff;
   background: #ff7979;
@@ -25,7 +25,7 @@ body {
   position: absolute;
   height: 100%;
   width: 4px;
-  background: #fff;
+  background: #040404;
   left: 50%;
   top: 20px;
   /* transform: translateX(-50%); */

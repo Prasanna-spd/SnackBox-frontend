@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Footer from "../footer";
 import Navbar from "../Navbar";
+import { Link } from "react-router-dom";
 export default function MyOrder() {
   const [orderData, setorderData] = useState("");
 
@@ -40,13 +41,28 @@ export default function MyOrder() {
                       .map((item) => {
                         return item.map((arrayData) => {
                           return (
-                            <div>
-                              {arrayData.Order_date ? (
-                                <div className="m-auto mt-5">
+                            <div className="d-flex justify-content-center align-items-center flex-column">
+                              {arrayData.Order_date && (
+                                <>
+                                  <div className="m-4">
+                                    {/* <button></button> */}
+                                    <Link to="/timeline">
+                                      <button
+                                        type="button"
+                                        class="btn btn-success"
+                                      >
+                                        {arrayData.Order_date}
+                                      </button>
+                                    </Link>
+                                  </div>
+                                </>
+                              )}
+                              {/* <div className="m-auto mt-5">
                                   {(data = arrayData.Order_date)}
                                   <hr />
-                                </div>
-                              ) : (
+                                </div> */}
+
+                              {/* ) : (
                                 <div className="col-12 col-md-6 col-lg-3">
                                   <div
                                     className="card mt-3"
@@ -86,7 +102,7 @@ export default function MyOrder() {
                                     </div>
                                   </div>
                                 </div>
-                              )}
+                              )} */}
                             </div>
                           );
                         });
