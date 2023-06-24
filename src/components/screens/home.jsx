@@ -29,16 +29,20 @@ export default function Home() {
 
   return (
     <div>
-      <div>
+      <div className="navbaaar">
         <Navbar />
       </div>
       <div>
-        <div id="carouselExample" class="carousel slide">
+        <div
+          id="carouselExample"
+          class="carousel slide mt-4 d-flex justify-content-center align-items-center"
+          style={{ height: "500px" }}
+        >
           <div
-            class="carousel-inner"
+            class="carousel-inner "
             id="carousel-size"
             style={{
-              objectFit: "contain",
+              height: "100%",
             }}
           >
             <div
@@ -56,31 +60,25 @@ export default function Home() {
                     setSearch(e.target.value);
                   }}
                 />
-                {/* <button
-                  class="btn btn-outline-success bg-success text-white"
-                  type="submit"
-                >
-                  Search
-                </button> */}
               </div>
             </div>
             <div class="carousel-item active">
               <img
-                src="https://source.unsplash.com/random/2500x2500/?burger"
+                src="https://source.unsplash.com/random/1520x400/?burger"
+                class="d-block  "
+                alt="..."
+              />
+            </div>
+            <div class="carousel-item">
+              <img
+                src="https://source.unsplash.com/random/1520x400/?pizza"
                 class="d-block w-100 "
                 alt="..."
               />
             </div>
             <div class="carousel-item">
               <img
-                src="https://source.unsplash.com/random/2500x2500/?pizza"
-                class="d-block w-100 "
-                alt="..."
-              />
-            </div>
-            <div class="carousel-item">
-              <img
-                src="https://source.unsplash.com/random/2500x2500/?biryani"
+                src="https://source.unsplash.com/random/1520x400/?biryani"
                 class="d-block w-100 "
                 alt="..."
               />
@@ -92,16 +90,22 @@ export default function Home() {
             data-bs-target="#carouselExample"
             data-bs-slide="prev"
           >
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span
+              class="carousel-control-prev-icon bg-dark rounded-circle"
+              aria-hidden="true"
+            ></span>
             <span class="visually-hidden">Previous</span>
           </button>
           <button
-            class="carousel-control-next"
+            class="carousel-control-next "
             type="button"
             data-bs-target="#carouselExample"
             data-bs-slide="next"
           >
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span
+              class="carousel-control-next-icon bg-dark rounded-circle"
+              aria-hidden="true"
+            ></span>
             <span class="visually-hidden">Next</span>
           </button>
         </div>
@@ -110,7 +114,7 @@ export default function Home() {
         {foodCat !== [] ? (
           foodCat.map((data) => {
             return (
-              <div className="row mb-3">
+              <div className="row mb-3" style={{ width: "100%" }}>
                 <div key={data._id} className="fs-3 m-3">
                   {data.CategoryName}
                 </div>

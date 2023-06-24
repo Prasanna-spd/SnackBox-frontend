@@ -26,7 +26,7 @@ export default function MyOrder() {
   }, []);
   return (
     <div>
-      <div>
+      <div className="navbaaar">
         <Navbar />
       </div>
 

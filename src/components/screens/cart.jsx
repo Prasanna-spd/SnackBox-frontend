@@ -52,7 +52,7 @@ export default function Cart() {
 
           <tbody className="text-light">
             {data.map((food, index) => (
-              <tr>
+              <tr key={index}>
                 <th scope="row">{index + 1}</th>
                 <td>{food.name}</td>
                 <td>{food.qty}</td>
