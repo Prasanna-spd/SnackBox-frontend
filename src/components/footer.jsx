@@ -4,17 +4,19 @@ import { Link } from "react-router-dom";
 export default function footer() {
   return (
     <div>
-      <footer className="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-        <div className="col-md-4 d-flex align-items-center">
+      <footer
+        className="d-flex  justify-content-between align-items-center py-2 text-light border-top m-3"
+        // style={{ "backgroundColor": "#414345" }}
+      >
+        <div className="col-md-4 d-flex justify-content-between align-items-center ">
           <Link
             to="/"
-            className="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1"
-          ></Link>
-          <span className="mb-3 mb-md-0 text-muted">
-            © 2022 Eat N Drink. Inc
-          </span>
+            className="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1 fs-3"
+          >
+            EAT-N-DRINK
+          </Link>
         </div>
-
+        <div className="mb-3 mb-md-0 text-light">© 2022 Eat N Drink. Inc</div>
         <ul className="nav col-md-4 justify-content-end list-unstyled d-flex me=2">
           <li className="ms-3">
             <Link className="text-muted" to="#">

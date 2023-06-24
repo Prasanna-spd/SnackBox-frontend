@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useCart } from "./contextReducer";
 import Modal from "../Modal";
 import Cart from "./screens/cart";
 
 export default function Navbar() {
+  let data = useCart();
   const [cartView, setcartView] = useState();
   const navigate = useNavigate();
 
@@ -22,7 +24,7 @@ export default function Navbar() {
         <div className="container-fluid ">
           <Link
             className="navbar-brand fs-3 fst-italic"
-            style={{ color: "#0d6efd" }}
+            style={{ color: "#198754" }}
             to="/"
           >
             Eat N Drink
@@ -45,7 +47,7 @@ export default function Navbar() {
                   className="nav-link active fs-5"
                   aria-current="page"
                   to="/"
-                  style={{ color: "#0d6efd" }}
+                  style={{ color: "#198754" }}
                 >
                   Home
                 </Link>
@@ -56,7 +58,7 @@ export default function Navbar() {
                   className="nav-link active fs-5"
                   aria-current="page"
                   to="/myOrder"
-                  style={{ color: "#0d6efd" }}
+                  style={{ color: "#198754" }}
                 >
                   MyOrders
                 </Link>
@@ -87,6 +89,18 @@ export default function Navbar() {
                   }}
                 >
                   MyCart
+                  <span
+                    style={{
+                      verticalAlign: "super",
+                      margin: "5px",
+                      padding: "4px",
+                      backgroundColor: "#198754",
+                      borderRadius: "9px",
+                      color: "white",
+                    }}
+                  >
+                    {data.length}
+                  </span>
                 </div>
                 {cartView ? (
                   <Modal onClose={() => setcartView(false)}>

@@ -3,7 +3,11 @@ import React from "react";
 export default function carousel() {
   return (
     <div>
-      <div id="carouselExample" class="carousel slide">
+      <div
+        id="carouselExample"
+        class="carousel slide"
+        style={{ backgroundColor: "red" }}
+      >
         <div
           class="carousel-inner"
           id="carousel-size"
@@ -30,7 +34,7 @@ export default function carousel() {
               </button>
             </form>
           </div>
-          <div class="carousel-item active">
+          {/* <div class="carousel-item active">
             <img
               src="https://source.unsplash.com/random/?burger"
               class="d-block w-100"
@@ -50,7 +54,7 @@ export default function carousel() {
               class="d-block w-100"
               alt="..."
             />
-          </div>
+          </div> */}
         </div>
         <button
           class="carousel-control-prev"
