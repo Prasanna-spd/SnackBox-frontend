@@ -13,13 +13,15 @@ app.use((req, res, next) => {
 });
 
 mongodb();
+
 app.use(express.static("public"));
 app.use(express.json());
 app.use("/api", require("./routes/createUser"));
 app.use("/api", require("./routes/loginUser"));
 app.use("/api", require("./routes/displayData"));
 app.use("/api", require("./routes/orderData"));
-// app.use("/api", require("./routes/resetPassword"));
+// app.use("/api", require("./controllers/auth"));
+// app.use(authRouter);
 
 app.get("/", (req, res) => {
   res.send("Hello world");

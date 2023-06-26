@@ -75,7 +75,7 @@ export default function Cart() {
           <h1 className="fs-2">Total Price: {totalPrice}/-</h1>
         </div>
         <div>
-          <button className="btn bg-success mt-5 " onClick={handleCheckOut}>
+          <button className="btn bg-success mt-5 mb-5" onClick={handleCheckOut}>
             Check Out
           </button>
         </div>

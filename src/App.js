@@ -13,12 +13,11 @@ function App() {
       <Router>
         <div>
           <Routes>
-            <Route exact path="/home" element={<Home />} />
+            <Route exact path="/" element={<Home />} />
             <Route exact path="/login" element={<Login />} />
             <Route exact path="/createUser" element={<Signup />} />
             <Route exact path="/myOrder" element={<MyOrder />} />
             <Route exact path="/timeline" element={<Timeline />} />
-            <Route exact path="/auth/google/myOrders" element={<MyOrder />} />
           </Routes>
         </div>
       </Router>

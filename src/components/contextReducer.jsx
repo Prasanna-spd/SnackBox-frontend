@@ -24,13 +24,14 @@ const reducer = (state, action) => {
 
     case "UPDATE":
       return state.map((food) => {
-        if (food.id === action.id) {
+        if (food.id === action.id && food.size === String(action.size)) {
           return {
             ...food,
-            qty: parseInt(action.qty) + food.qty,
+            qty: parseInt(action.qty) + parseInt(food.qty),
             price: action.price + food.price,
           };
         }
+        console.log(state);
         return food;
       });
     case "DROP":

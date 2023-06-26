@@ -1,6 +1,4 @@
-// const bcrypt = require("bcryptjs");
 const mongoose = require("mongoose");
-// const bcryptSalt = process.env.BCRYPT_SALT;
 
 const userSchema = new mongoose.Schema({
   name: {

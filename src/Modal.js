@@ -10,7 +10,7 @@ const MODAL_STYLES = {
   color: "aliceblue",
   transform: "translate(-50%, -50%)",
   zIndex: 1000,
-  height: "90%",
+  height: "auto",
   width: "90%",
 };
 

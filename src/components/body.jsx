@@ -34,26 +34,23 @@ export default function Body(props) {
     } else {
       let food = [];
       for (const item of data) {
-        // console.log(item.size);
-        // console.log(priceOptions[0].key);
         if (item.id === foodItem._id && item.size === size) {
           food = item;
 
           break;
         }
       }
-      // console.log("1111", food);
 
       if (food !== []) {
         if (food.size === size) {
           await dispatch({
             type: "UPDATE",
             id: foodItem._id,
+            size: size,
             price: finalPrice,
             qty: qty,
           });
-          // console.log(qty);
-          // console.log(food);
+          console.log(food);
           return;
         } else if (food.size !== size) {
           await dispatch({
@@ -64,7 +61,6 @@ export default function Body(props) {
             qty: qty,
             size: size,
           });
-          // console.log(food);
 
           return;
         }
@@ -79,7 +75,6 @@ export default function Body(props) {
         qty: qty,
         size: size,
       });
-      console.log(food);
     }
   };
 
