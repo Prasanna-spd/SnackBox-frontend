@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../Navbar";
+import { BASE_URL } from "../../services/helper";
 
 export default function Login() {
   const [credentials, setCredentials] = useState({
@@ -15,7 +16,7 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await fetch("http://localhost:5000/api/loginUser", {
+    const response = await fetch(`${BASE_URL}/api/loginUser`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -38,6 +39,7 @@ export default function Login() {
       navigate("/");
     }
   };
+
   return (
     <div>
       <div className="navbaaar">
@@ -98,7 +100,7 @@ export default function Login() {
                   <i className="fab fa-google m-2"></i>
                   <Link
                     className="btn btn-block"
-                    to="http://localhost:5000/auth/google"
+                    to={`${BASE_URL}/auth/google`}
                     role="button"
                   >
                     Sign In with Google

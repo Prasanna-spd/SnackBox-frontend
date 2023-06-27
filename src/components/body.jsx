@@ -15,7 +15,10 @@ export default function Body(props) {
   const foodItem = props.foodItems;
 
   const handleClick = () => {
-    if (!localStorage.getItem("authToken")) {
+    if (
+      !localStorage.getItem("authToken") &&
+      !localStorage.getItem("sessionId")
+    ) {
       navigate("/login");
     }
   };
@@ -29,7 +32,10 @@ export default function Body(props) {
   };
 
   const handleAddToCart = async () => {
-    if (!localStorage.getItem("authToken")) {
+    if (
+      !localStorage.getItem("authToken") &&
+      !localStorage.getItem("sessionId")
+    ) {
       navigate("/login");
     } else {
       let food = [];

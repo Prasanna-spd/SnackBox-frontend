@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./wwwtimeline.css";
 import Navbar from "../Navbar";
 import Footer from "../footer";
+import { BASE_URL } from "../../services/helper";
 
 export class Timeline extends Component {
   constructor(props) {
@@ -17,7 +18,7 @@ export class Timeline extends Component {
 
   fetchMyOrder = async () => {
     console.log(localStorage.getItem("userEmail"));
-    await fetch("http://localhost:5000/api/myorderData", {
+    await fetch(`${BASE_URL}/api/myorderData`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -84,7 +85,7 @@ export class Timeline extends Component {
                                       <span className="title">
                                         {arrayData.name}
                                       </span>
-                                      <span>1st Jan 2021</span>
+                                      {/* <span>1st Jan 2021</span> */}
                                     </div>
                                     <p>
                                       <span className="m-1">
