@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import Footer from "../footer";
 import Navbar from "../Navbar";
 import { Link } from "react-router-dom";
+import { BASE_URL } from "../../services/helper";
+
 export default function MyOrder() {
   const [orderData, setorderData] = useState("");
 
   const fetchMyOrder = async () => {
     console.log(localStorage.getItem("userEmail"));
-    await fetch("http://localhost:5000/api/myorderData", {
+    await fetch(`${BASE_URL}/api/myorderData`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

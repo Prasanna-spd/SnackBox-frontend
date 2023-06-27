@@ -2,15 +2,20 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../Navbar";
 import Footer from "../footer";
 import Body from "../body";
+import { BASE_URL } from "../../services/helper";
+// require("dotenv").config();
+
 // import Carousel from "../carousel";
 
 export default function Home() {
+  const allowhim = 1;
   const [foodCat, setFoodCat] = useState([]);
   const [foodItem, setFoodItem] = useState([]);
   const [search, setSearch] = useState("");
+  const [Oauser, setOaUser] = useState(null);
 
   const loadData = async () => {
-    let response = await fetch("http://localhost:5000/api/foodData", {
+    let response = await fetch(`${BASE_URL}/api/foodData`, {
       method: "POST",
       handlers: {
         "Content-Type": "application/json",
@@ -27,10 +32,42 @@ export default function Home() {
     loadData();
   }, []);
 
+  useEffect(() => {
+    const getUser = () => {
+      fetch(`${BASE_URL}/auth/login/success`, {
+        method: "GET",
+        credentials: "include",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      })
+        .then((response) => {
+          if (response.status === 200) {
+            return response.json().then((milla) => {
+              localStorage.setItem("sessionId", milla.sessionId);
+              localStorage.setItem("userEmail", milla.email);
+              return milla;
+            });
+          }
+          throw new Error("authentication has been failed!");
+        })
+
+        .then((resObject) => {
+          setOaUser(resObject.user);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+    getUser();
+  }, []);
+  console.log(Oauser);
+
   return (
     <div>
       <div className="navbaaar">
-        <Navbar />
+        <Navbar allowHim={allowhim} />
       </div>
       <div>
         <div

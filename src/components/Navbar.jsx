@@ -3,15 +3,25 @@ import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "./contextReducer";
 import Modal from "../Modal";
 import Cart from "./screens/cart";
+import { BASE_URL } from "../services/helper";
 
-export default function Navbar() {
+export default function Navbar({ allowHim }) {
   let data = useCart();
   const [cartView, setcartView] = useState();
   const navigate = useNavigate();
 
+  // const handleLogout = () => {
+  //   localStorage.removeItem("authToken");
+  //   localStorage.removeItem("userEmail");
+  //   localStorage.removeItem("sessionId");
+  //   document.cookie = "session; path=/;";
+  //   navigate("/login");
+  // };
   const handleLogout = () => {
     localStorage.removeItem("authToken");
     localStorage.removeItem("userEmail");
+    localStorage.removeItem("sessionId");
+    window.location.href = `${BASE_URL}/auth/logout`;
     navigate("/login");
   };
 
@@ -53,7 +63,8 @@ export default function Navbar() {
                 </Link>
               </li>
 
-              {localStorage.getItem("authToken") ? (
+              {localStorage.getItem("authToken") ||
+              localStorage.getItem("sessionId") ? (
                 <Link
                   className="nav-link active fs-5"
                   aria-current="page"
@@ -67,7 +78,8 @@ export default function Navbar() {
               )}
             </ul>
 
-            {!localStorage.getItem("authToken") ? (
+            {!localStorage.getItem("authToken") &&
+            !localStorage.getItem("sessionId") ? (
               <div className="d-flex">
                 <Link
                   className="btn bg-white text-success mx-1"
@@ -110,7 +122,6 @@ export default function Navbar() {
 
                 <Link
                   className="btn bg-white text-danger mx-1"
-                  to="/login"
                   onClick={handleLogout}
                 >
                   Logout

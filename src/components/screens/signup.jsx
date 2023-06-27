@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../Navbar";
+import { BASE_URL } from "../../services/helper";
 
 export default function Signup() {
+  let navigate = useNavigate();
   const [credentials, setCredentials] = useState({
     name: "",
     email: "",
@@ -17,7 +19,7 @@ export default function Signup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await fetch("http://localhost:5000/api/createUser", {
+    const response = await fetch(`${BASE_URL}/api/createUser`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -35,8 +37,11 @@ export default function Signup() {
     console.log(data);
     if (!data.success) {
       alert("Enter Valid Credentials");
+    } else {
+      navigate("/login");
     }
   };
+  console.log(credentials);
 
   return (
     <>
@@ -138,6 +143,18 @@ export default function Signup() {
           <div className="col-md-6 d-flex flex-column align-items-center justify-content-center">
             <form onSubmit={handleSubmit}>
               <div className="mb-3">
+                <label htmlfor="name" className="form-label">
+                  Name
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  name="name"
+                  value={credentials.name}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="mb-3">
                 <label htmlFor="exampleInputEmail1" className="form-label">
                   Email address
                 </label>
@@ -196,7 +213,7 @@ export default function Signup() {
                   <i className="fab fa-google m-2"></i>
                   <Link
                     className="btn btn-block"
-                    to="http://localhost:5000/api/auth/google"
+                    to={`${BASE_URL}/api/auth/google`}
                     role="button"
                   >
                     Sign Up with Google
