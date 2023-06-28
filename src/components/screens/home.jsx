@@ -12,6 +12,7 @@ export default function Home() {
   const [foodCat, setFoodCat] = useState([]);
   const [foodItem, setFoodItem] = useState([]);
   const [search, setSearch] = useState("");
+  const [Oauser, setOaUser] = useState(null);
 
   // const [loading, setLoading] = useState(false);
 
@@ -34,12 +35,41 @@ export default function Home() {
     loadData();
   }, []);
 
-  // useEffect(() => {
+  useEffect(() => {
+    const getUser = () => {
+      fetch(`${BASE_URL}/auth/login/success`, {
+        method: "GET",
+        // credentials: "include",
+        headers: {
+          // Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      })
+        .then(async (response) => {
+          if (response.status === 200) {
+            return response.json().then((milla) => {
+              localStorage.setItem("sessionId", milla.sessionId);
+              localStorage.setItem("userEmail", milla.email);
+              console.log(response);
+              return milla;
+            });
+          }
+          throw new Error("authentication has been failed!");
+        })
 
-  // }, []);
-  // useEffect(() => {
-  //   getUser();
-  // }, []);
+        .then((resObject) => {
+          setOaUser(resObject.user);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      console.log("hello", `${BASE_URL}/auth/login/success`);
+    };
+
+    getUser();
+  }, []);
+
+  console.log("hello", Oauser, `${BASE_URL}/auth/login/success`);
 
   return (
     <div>
