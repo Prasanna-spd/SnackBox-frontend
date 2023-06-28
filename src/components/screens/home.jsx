@@ -47,7 +47,7 @@ export default function Home() {
       },
     })
       .then((response) => {
-        if (response.status === 200) {
+        if (response.success) {
           return response.json().then((milla) => {
             localStorage.setItem("sessionId", milla.sessionId);
             localStorage.setItem("userEmail", milla.email);
