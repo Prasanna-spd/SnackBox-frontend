@@ -64,7 +64,7 @@ export default function Home() {
     };
     getUser();
   }, [loading]);
-  console.log("hello", Oauser);
+  console.log("hello", Oauser, `${BASE_URL}/auth/login/success`);
 
   return (
     <div>
