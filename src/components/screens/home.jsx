@@ -32,36 +32,36 @@ export default function Home() {
     loadData();
   }, []);
 
-  useEffect(() => {
-    const getUser = () => {
-      fetch(`${BASE_URL}/auth/login/success`, {
-        method: "GET",
-        credentials: "include",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
+  // useEffect(() => {
+  const getUser = () => {
+    fetch(`${BASE_URL}/auth/login/success`, {
+      method: "GET",
+      credentials: "include",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    })
+      .then(async (response) => {
+        if (response.status === 200) {
+          return response.json().then((milla) => {
+            localStorage.setItem("sessionId", milla.sessionId);
+            localStorage.setItem("userEmail", milla.email);
+            return milla;
+          });
+        }
+        throw new Error("authentication has been failed!");
       })
-        .then(async (response) => {
-          if (response.status === 200) {
-            return response.json().then((milla) => {
-              localStorage.setItem("sessionId", milla.sessionId);
-              localStorage.setItem("userEmail", milla.email);
-              return milla;
-            });
-          }
-          throw new Error("authentication has been failed!");
-        })
 
-        .then((resObject) => {
-          setOaUser(resObject.user);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    };
-    getUser();
-  }, []);
+      .then((resObject) => {
+        setOaUser(resObject.user);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  getUser();
+  // }, []);
   console.log(Oauser);
 
   return (
