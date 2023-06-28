@@ -64,7 +64,7 @@ export default function Home() {
     };
     getUser();
   }, [loading]);
-  console.log("hello");
+  console.log("hello", Oauser);
 
   return (
     <div>
