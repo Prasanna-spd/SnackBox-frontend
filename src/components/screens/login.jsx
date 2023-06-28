@@ -80,7 +80,6 @@ export default function Login() {
   };
 
   console.log("hello", Oauser, `${BASE_URL}/auth/login/success`);
-  getUser();
 
   return (
     <div>
@@ -144,7 +143,7 @@ export default function Login() {
                     className="btn btn-block"
                     to={`${BASE_URL}/auth/google`}
                     role="button"
-                    onClick={() => getUser()}
+                    onClick={getUser}
                   >
                     Sign In with Google
                   </Link>
