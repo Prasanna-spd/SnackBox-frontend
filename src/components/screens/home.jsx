@@ -39,6 +39,7 @@ export default function Home() {
     const getUser = () => {
       fetch(`${BASE_URL}/auth/login/success`, {
         method: "GET",
+        mode: "cors",
         // credentials: "include",
         headers: {
           // Accept: "application/json",
