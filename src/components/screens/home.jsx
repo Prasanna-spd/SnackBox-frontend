@@ -39,7 +39,7 @@ export default function Home() {
   const getUser = async () => {
     const sessionResponse = await fetch(`${BASE_URL}/auth/login/success`, {
       method: "GET",
-      credentials: "include",
+      // credentials: "include",
       headers: {
         // Accept: "application/json",
         "Content-Type": "application/json",
