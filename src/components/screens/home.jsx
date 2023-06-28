@@ -13,6 +13,7 @@ export default function Home() {
   const [foodItem, setFoodItem] = useState([]);
   const [search, setSearch] = useState("");
   const [Oauser, setOaUser] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const loadData = async () => {
     let response = await fetch(`${BASE_URL}/api/foodData`, {
@@ -25,6 +26,7 @@ export default function Home() {
 
     setFoodItem(response[0]);
     setFoodCat(response[1]);
+    setLoading(true);
     // console.log(response[0], response[1]);
   };
 
@@ -32,36 +34,36 @@ export default function Home() {
     loadData();
   }, []);
 
-  // useEffect(() => {
-  const getUser = () => {
-    fetch(`${BASE_URL}/auth/login/success`, {
-      method: "GET",
-      credentials: "include",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-    })
-      .then(async (response) => {
-        if (response.status === 200) {
-          return response.json().then((milla) => {
-            localStorage.setItem("sessionId", milla.sessionId);
-            localStorage.setItem("userEmail", milla.email);
-            return milla;
-          });
-        }
-        throw new Error("authentication has been failed!");
+  useEffect(() => {
+    const getUser = () => {
+      fetch(`${BASE_URL}/auth/login/success`, {
+        method: "GET",
+        credentials: "include",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
       })
+        .then(async (response) => {
+          if (response.status === 200) {
+            return response.json().then((milla) => {
+              localStorage.setItem("sessionId", milla.sessionId);
+              localStorage.setItem("userEmail", milla.email);
+              return milla;
+            });
+          }
+          throw new Error("authentication has been failed!");
+        })
 
-      .then((resObject) => {
-        setOaUser(resObject.user);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-  getUser();
-  // }, []);
+        .then((resObject) => {
+          setOaUser(resObject.user);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+    getUser();
+  }, [loading]);
   console.log(Oauser);
 
   return (
