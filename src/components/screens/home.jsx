@@ -48,7 +48,7 @@ export default function Home() {
 
     const sessionData = await sessionResponse.json();
 
-    if (sessionData.status === 200) {
+    if (sessionData.success) {
       localStorage.setItem("sessionId", sessionData.sessionId);
       localStorage.setItem("userEmail", sessionData.email);
       setOaUser(sessionData.user);
