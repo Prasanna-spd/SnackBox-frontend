@@ -144,6 +144,7 @@ export default function Login() {
                     className="btn btn-block"
                     to={`${BASE_URL}/auth/google`}
                     role="button"
+                    onClick={() => getUser()}
                   >
                     Sign In with Google
                   </Link>
