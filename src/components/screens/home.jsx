@@ -61,10 +61,11 @@ export default function Home() {
         .catch((err) => {
           console.log(err);
         });
+      console.log("hello", `${BASE_URL}/auth/login/success`);
     };
     getUser();
-  }, [loading]);
-  console.log("hello", Oauser, `${BASE_URL}/auth/login/success`);
+  }, []);
+  console.log("hello", Oauser, `${BASE_URL}/auth/login/success`, loading);
 
   return (
     <div>
