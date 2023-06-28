@@ -34,36 +34,48 @@ export default function Home() {
     loadData();
   }, []);
 
-  useEffect(() => {
-    const getUser = () => {
-      fetch(`${BASE_URL}/auth/login/success`, {
-        method: "GET",
-        credentials: "include",
-        headers: {
-          // Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-      })
-        .then(async (response) => {
-          if (response.status === 200) {
-            return response.json().then((milla) => {
-              localStorage.setItem("sessionId", milla.sessionId);
-              localStorage.setItem("userEmail", milla.email);
-              console.log(response);
-              return milla;
-            });
-          }
-          throw new Error("authentication has been failed!");
-        })
+  // useEffect(() => {
 
-        .then((resObject) => {
-          setOaUser(resObject.user);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-      console.log("hello", `${BASE_URL}/auth/login/success`);
-    };
+  const getUser = async () => {
+    const sessionResponse = await fetch(`${BASE_URL}/auth/login/success`, {
+      method: "GET",
+      credentials: "include",
+      headers: {
+        // Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    });
+
+    const sessionData = await sessionResponse.json();
+
+    if (sessionData.status === 200) {
+      localStorage.setItem("sessionId", sessionData.sessionId);
+      localStorage.setItem("userEmail", sessionData.email);
+      setOaUser(sessionData.user);
+    }
+    // .then(async (response) => {
+    //   if (response.status === 200) {
+    //     return response.json().then((milla) => {
+    //       localStorage.setItem("sessionId", milla.sessionId);
+    //       localStorage.setItem("userEmail", milla.email);
+    //       console.log(response);
+    //       return milla;
+    //     });
+    //   }
+    //   throw new Error("authentication has been failed!");
+    // })
+
+    // .then((resObject) => {
+    //   setOaUser(resObject.user);
+    // })
+    // .catch((err) => {
+    //   console.log(err);
+    // });
+    console.log("hello", `${BASE_URL}/auth/login/success`);
+  };
+
+  // }, []);
+  useEffect(() => {
     getUser();
   }, []);
   console.log("hello", Oauser, `${BASE_URL}/auth/login/success`, loading);
