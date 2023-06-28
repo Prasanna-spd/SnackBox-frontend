@@ -42,7 +42,7 @@ export default function Home() {
           "Content-Type": "application/json",
         },
       })
-        .then((response) => {
+        .then(async (response) => {
           if (response.status === 200) {
             return response.json().then((milla) => {
               localStorage.setItem("sessionId", milla.sessionId);
