@@ -49,6 +49,7 @@ export default function Home() {
             return response.json().then((milla) => {
               localStorage.setItem("sessionId", milla.sessionId);
               localStorage.setItem("userEmail", milla.email);
+              console.log(response);
               return milla;
             });
           }
