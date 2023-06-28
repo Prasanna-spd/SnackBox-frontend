@@ -8,6 +8,7 @@ export default function Login() {
     email: "",
     password: "",
   });
+  const [Oauser, setOaUser] = useState(null);
   let navigate = useNavigate();
   const handleChange = (event) => {
     setCredentials({ ...credentials, [event.target.name]: event.target.value });
@@ -39,6 +40,47 @@ export default function Login() {
       navigate("/");
     }
   };
+
+  const getUser = async () => {
+    const sessionResponse = await fetch(`${BASE_URL}/auth/login/success`, {
+      method: "GET",
+      // credentials: "include",
+      headers: {
+        // Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    });
+
+    const sessionData = await sessionResponse.json();
+
+    if (sessionData.success) {
+      localStorage.setItem("sessionId", sessionData.sessionId);
+      localStorage.setItem("userEmail", sessionData.email);
+      setOaUser(sessionData.user);
+    }
+    // .then(async (response) => {
+    //   if (response.status === 200) {
+    //     return response.json().then((milla) => {
+    //       localStorage.setItem("sessionId", milla.sessionId);
+    //       localStorage.setItem("userEmail", milla.email);
+    //       console.log(response);
+    //       return milla;
+    //     });
+    //   }
+    //   throw new Error("authentication has been failed!");
+    // })
+
+    // .then((resObject) => {
+    //   setOaUser(resObject.user);
+    // })
+    // .catch((err) => {
+    //   console.log(err);
+    // });
+    console.log("hello", `${BASE_URL}/auth/login/success`);
+  };
+
+  console.log("hello", Oauser, `${BASE_URL}/auth/login/success`);
+  getUser();
 
   return (
     <div>
