@@ -9,6 +9,8 @@ import { BASE_URL } from "../../services/helper";
 
 export default function Home() {
   const allowhim = 1;
+  const [ssId, setSsId] = useState(null);
+  const [usEm, setUsEm] = useState(null);
   const [foodCat, setFoodCat] = useState([]);
   const [foodItem, setFoodItem] = useState([]);
   const [search, setSearch] = useState("");
@@ -46,11 +48,12 @@ export default function Home() {
         "Content-Type": "application/json",
       },
     })
-      .then((response) => {
+      .then(async (response) => {
         if (response.success) {
           return response.json().then((milla) => {
-            localStorage.setItem("sessionId", milla.sessionId);
-            localStorage.setItem("userEmail", milla.email);
+            setSsId(milla.sessionId);
+            setUsEm(milla.email);
+
             console.log(response);
             return milla;
           });
@@ -60,15 +63,16 @@ export default function Home() {
 
       .then((resObject) => {
         setOaUser(resObject.user);
+        localStorage.setItem("sessionId", resObject.sessionId);
+        localStorage.setItem("userEmail", resObject.email);
       })
       .catch((err) => {
         console.log(err);
       });
     console.log("hello", `${BASE_URL}/auth/login/success`);
   };
-
-  getUser();
-  // }, []);
+  console.log(ssId);
+  console.log(usEm);
   useEffect(() => {
     getUser();
   }, []);
