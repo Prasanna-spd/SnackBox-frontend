@@ -72,7 +72,7 @@ export default function Home() {
     // console.log("hello", `${BASE_URL}/auth/login/success`);
   };
 
-  // console.log("hello", Oauser, `${BASE_URL}/auth/login/success`);
+  console.log("hello", Oauser, `${BASE_URL}/auth/login/success`);
 
   return (
     <div>
