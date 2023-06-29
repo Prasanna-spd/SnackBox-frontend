@@ -63,8 +63,8 @@ export default function Home() {
 
       .then((resObject) => {
         setOaUser(resObject.user);
-        localStorage.setItem("sessionId", resObject.sessionId);
-        localStorage.setItem("userEmail", resObject.email);
+        localStorage.setItem("sessionId", ssId);
+        localStorage.setItem("userEmail", usEm);
       })
       .catch((err) => {
         console.log(err);
