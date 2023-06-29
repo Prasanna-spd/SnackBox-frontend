@@ -9,8 +9,8 @@ import { BASE_URL } from "../../services/helper";
 
 export default function Home() {
   const allowhim = 1;
-  const [ssId, setSsId] = useState(null);
-  const [usEm, setUsEm] = useState(null);
+  // const [ssId, setSsId] = useState(null);
+  // const [usEm, setUsEm] = useState(null);
   const [foodCat, setFoodCat] = useState([]);
   const [foodItem, setFoodItem] = useState([]);
   const [search, setSearch] = useState("");
@@ -51,8 +51,8 @@ export default function Home() {
       .then(async (response) => {
         if (response.status === 200) {
           return response.json().then((milla) => {
-            setSsId(milla.sessionId);
-            setUsEm(milla.email);
+            localStorage.setItem("sessionId", milla.sessionId);
+            localStorage.setItem("userEmail", milla.email);
 
             console.log(response);
             return milla;
@@ -63,16 +63,12 @@ export default function Home() {
 
       .then((resObject) => {
         setOaUser(resObject.user);
-        localStorage.setItem("sessionId", ssId);
-        localStorage.setItem("userEmail", usEm);
       })
       .catch((err) => {
         console.log(err);
       });
     console.log("hello", `${BASE_URL}/auth/login/success`);
   };
-  console.log(ssId);
-  console.log(usEm);
 
   console.log("hello", Oauser, `${BASE_URL}/auth/login/success`);
   getUser();
