@@ -52,8 +52,9 @@ export default function Home() {
       .then(async (response) => {
         if (response.status === 200) {
           return response.json().then((milla) => {
-            localStorage.setItem("sessionId", milla.sessionId);
-            localStorage.setItem("userEmail", milla.email);
+            const { sessionId, email } = milla;
+            localStorage.setItem("sessionId", sessionId);
+            localStorage.setItem("userEmail", email);
 
             console.log(response);
             return milla;
