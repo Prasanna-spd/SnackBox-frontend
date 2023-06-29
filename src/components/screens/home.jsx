@@ -14,7 +14,7 @@ export default function Home() {
   const [foodCat, setFoodCat] = useState([]);
   const [foodItem, setFoodItem] = useState([]);
   const [search, setSearch] = useState("");
-  const [Oauser, setOaUser] = useState(null);
+  // const [Oauser, setOaUser] = useState(null);
 
   // const [loading, setLoading] = useState(false);
 
@@ -35,44 +35,53 @@ export default function Home() {
 
   useEffect(() => {
     loadData();
-    getUser();
+    // getUser();
   }, []);
 
   // useEffect(() => {
-  const getUser = () => {
-    fetch(`${BASE_URL}/auth/login/success`, {
-      method: "GET",
-      mode: "cors",
-      // credentials: "include",
-      headers: {
-        // Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-    })
-      .then(async (response) => {
-        if (response.status === 200) {
-          return response.json().then((milla) => {
-            const { sessionId, email } = milla;
-            localStorage.setItem("sessionId", sessionId);
-            localStorage.setItem("userEmail", email);
+  // const getUser = () => {
+  //   fetch(`${BASE_URL}/auth/login/success`, {
+  //     method: "GET",
+  //     mode: "cors",
+  //     // credentials: "include",
+  //     headers: {
+  //       // Accept: "application/json",
+  //       "Content-Type": "application/json",
+  //     },
+  //   })
+  //     .then(async (response) => {
+  //       if (response.status === 200) {
+  //         return response.json().then((milla) => {
+  //           const { sessionId, email } = milla;
+  //           localStorage.setItem("sessionId", sessionId);
+  //           localStorage.setItem("userEmail", email);
 
-            // console.log(response);
-            return milla;
-          });
-        }
-        throw new Error("authentication has been failed!");
-      })
+  //           // console.log(response);
+  //           return milla;
+  //         });
+  //       }
+  //       throw new Error("authentication has been failed!");
+  //     })
 
-      .then((resObject) => {
-        setOaUser(resObject.user);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    // console.log("hello", `${BASE_URL}/auth/login/success`);
-  };
+  //     .then((resObject) => {
+  //       setOaUser(resObject.user);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  //   // console.log("hello", `${BASE_URL}/auth/login/success`);
+  // };
+  const urlParams = new URLSearchParams(window.location.search);
+  const sessionId = urlParams.get("sessionId");
+  const userEmail = urlParams.get("userEmail");
 
-  console.log("hello", Oauser, `${BASE_URL}/auth/login/success`);
+  // Store session ID and user email in local storage
+  if (sessionId && userEmail) {
+    localStorage.setItem("sessionId", sessionId);
+    localStorage.setItem("userEmail", userEmail);
+  }
+
+  console.log("hello", `${BASE_URL}/auth/login/success`);
 
   return (
     <div>
