@@ -35,6 +35,7 @@ export default function Home() {
 
   useEffect(() => {
     loadData();
+    getUser();
   }, []);
 
   // useEffect(() => {
@@ -73,9 +74,6 @@ export default function Home() {
   };
   console.log(ssId);
   console.log(usEm);
-  useEffect(() => {
-    getUser();
-  }, []);
 
   console.log("hello", Oauser, `${BASE_URL}/auth/login/success`);
 
