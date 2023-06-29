@@ -56,7 +56,7 @@ export default function Body(props) {
             price: finalPrice,
             qty: qty,
           });
-          console.log(food);
+          // console.log(food);
           return;
         } else if (food.size !== size) {
           await dispatch({

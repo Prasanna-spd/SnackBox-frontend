@@ -31,7 +31,7 @@ const reducer = (state, action) => {
             price: action.price + food.price,
           };
         }
-        console.log(state);
+        // console.log(state);
         return food;
       });
     case "DROP":

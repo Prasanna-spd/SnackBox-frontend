@@ -56,7 +56,7 @@ export default function Home() {
             localStorage.setItem("sessionId", sessionId);
             localStorage.setItem("userEmail", email);
 
-            console.log(response);
+            // console.log(response);
             return milla;
           });
         }
@@ -69,10 +69,10 @@ export default function Home() {
       .catch((err) => {
         console.log(err);
       });
-    console.log("hello", `${BASE_URL}/auth/login/success`);
+    // console.log("hello", `${BASE_URL}/auth/login/success`);
   };
 
-  console.log("hello", Oauser, `${BASE_URL}/auth/login/success`);
+  // console.log("hello", Oauser, `${BASE_URL}/auth/login/success`);
 
   return (
     <div>
@@ -111,21 +111,21 @@ export default function Home() {
             </div>
             <div class="carousel-item active">
               <img
-                src="https://source.unsplash.com/random/1520x400/?burger"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWQQ2xEk5gy8XWD7VPGYpY55TEXV2GqqrJTSwEMzeD&s"
                 class="d-block  "
                 alt="..."
               />
             </div>
             <div class="carousel-item">
               <img
-                src="https://source.unsplash.com/random/1520x400/?pizza"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTurhm8hhkZf-ITOvLe3sAT6JOUthjXFU6t7CP-AYbr&s"
                 class="d-block w-100 "
                 alt="..."
               />
             </div>
             <div class="carousel-item">
               <img
-                src="https://source.unsplash.com/random/1520x400/?biryani"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5XWXSjG7wYNHQiqKiRmTdJpKv72alR28tvVtJim9x&s"
                 class="d-block w-100 "
                 alt="..."
               />

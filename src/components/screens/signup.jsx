@@ -34,14 +34,14 @@ export default function Signup() {
 
     const data = await response.json();
 
-    console.log(data);
+    // console.log(data);
     if (!data.success) {
       alert("Enter Valid Credentials");
     } else {
       navigate("/login");
     }
   };
-  console.log(credentials);
+  // console.log(credentials);
 
   return (
     <>

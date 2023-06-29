@@ -29,13 +29,13 @@ export default function Login() {
 
     const data = await response.json();
 
-    console.log(data);
+    // console.log(data);
     if (!data.success) {
       alert("Enter Valid Credentials");
     } else if (data.success) {
       localStorage.setItem("userEmail", credentials.email);
       localStorage.setItem("authToken", data.authToken);
-      console.log(localStorage.getItem("authToken"));
+      // console.log(localStorage.getItem("authToken"));
       navigate("/");
     }
   };

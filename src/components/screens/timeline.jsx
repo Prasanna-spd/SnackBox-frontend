@@ -17,7 +17,7 @@ export class Timeline extends Component {
   }
 
   fetchMyOrder = async () => {
-    console.log(localStorage.getItem("userEmail"));
+    // console.log(localStorage.getItem("userEmail"));
     await fetch(`${BASE_URL}/api/myorderData`, {
       method: "POST",
       headers: {
