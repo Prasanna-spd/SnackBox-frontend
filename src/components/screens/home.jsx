@@ -35,6 +35,7 @@ export default function Home() {
 
   useEffect(() => {
     loadData();
+    getUser();
   }, []);
 
   // useEffect(() => {
@@ -71,7 +72,6 @@ export default function Home() {
   };
 
   console.log("hello", Oauser, `${BASE_URL}/auth/login/success`);
-  getUser();
 
   return (
     <div>
