@@ -49,7 +49,7 @@ export default function Home() {
       },
     })
       .then(async (response) => {
-        if (response.success) {
+        if (response.status === 200) {
           return response.json().then((milla) => {
             setSsId(milla.sessionId);
             setUsEm(milla.email);
