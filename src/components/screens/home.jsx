@@ -16,7 +16,7 @@ export default function Home() {
   const [search, setSearch] = useState("");
   // const [Oauser, setOaUser] = useState(null);
 
-  // const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const loadData = async () => {
     let response = await fetch(`${BASE_URL}/api/foodData`, {
@@ -29,7 +29,7 @@ export default function Home() {
 
     setFoodItem(response[0]);
     setFoodCat(response[1]);
-    // setLoading(true);
+    setLoading(false);
     // console.log(response[0], response[1]);
   };
 
@@ -166,6 +166,11 @@ export default function Home() {
           </button>
         </div>
       </div>
+      {loading} ?
+      <div className="container">
+        <h1>LOADING</h1>
+      </div>{" "}
+      :{" "}
       <div className="container ">
         {foodCat !== [] ? (
           foodCat.map((data) => {
