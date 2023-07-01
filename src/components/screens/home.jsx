@@ -167,50 +167,54 @@ export default function Home() {
         </div>
       </div>
       {loading} ?
-      <div className="container">
-        <h1>LOADING</h1>
-      </div>{" "}
-      :{" "}
-      <div className="container ">
-        {foodCat !== [] ? (
-          foodCat.map((data) => {
-            return (
-              <div className="row mb-3" style={{ width: "100%" }}>
-                <div key={data._id} className="fs-3 m-3">
-                  {data.CategoryName}
-                </div>
+      {
+        <div className="container">
+          <h1>LOADING</h1>
+        </div>
+      }
+      :
+      {
+        <div className="container ">
+          {foodCat !== [] ? (
+            foodCat.map((data) => {
+              return (
+                <div className="row mb-3" style={{ width: "100%" }}>
+                  <div key={data._id} className="fs-3 m-3">
+                    {data.CategoryName}
+                  </div>
 
-                <hr />
-                {foodItem !== [] ? (
-                  foodItem
-                    .filter(
-                      (item) =>
-                        item.CategoryName === data.CategoryName &&
-                        item.name.toLowerCase().includes(search.toLowerCase())
-                    )
-                    .map((filterItems) => {
-                      return (
-                        <div
-                          key={filterItems._id}
-                          className="col-12 col-md-6 col-lg-3"
-                        >
-                          <Body
-                            foodItems={filterItems}
-                            options={filterItems.options[0]}
-                          />
-                        </div>
-                      );
-                    })
-                ) : (
-                  <div>No data available</div>
-                )}
-              </div>
-            );
-          })
-        ) : (
-          <div>"""""""""""</div>
-        )}
-      </div>
+                  <hr />
+                  {foodItem !== [] ? (
+                    foodItem
+                      .filter(
+                        (item) =>
+                          item.CategoryName === data.CategoryName &&
+                          item.name.toLowerCase().includes(search.toLowerCase())
+                      )
+                      .map((filterItems) => {
+                        return (
+                          <div
+                            key={filterItems._id}
+                            className="col-12 col-md-6 col-lg-3"
+                          >
+                            <Body
+                              foodItems={filterItems}
+                              options={filterItems.options[0]}
+                            />
+                          </div>
+                        );
+                      })
+                  ) : (
+                    <div>No data available</div>
+                  )}
+                </div>
+              );
+            })
+          ) : (
+            <div>"""""""""""</div>
+          )}
+        </div>
+      }
       <div>
         <Footer />
       </div>
