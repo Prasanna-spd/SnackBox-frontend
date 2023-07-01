@@ -166,25 +166,21 @@ export default function Home() {
           </button>
         </div>
       </div>
-      {loading} ?
-      {
+      {loading ? (
         <div className="container">
-          <h1>LOADING</h1>
+          <h1>LOADING..........</h1>
         </div>
-      }
-      :
-      {
-        <div className="container ">
-          {foodCat !== [] ? (
+      ) : (
+        <div className="container">
+          {foodCat.length !== 0 ? (
             foodCat.map((data) => {
               return (
                 <div className="row mb-3" style={{ width: "100%" }}>
                   <div key={data._id} className="fs-3 m-3">
                     {data.CategoryName}
                   </div>
-
                   <hr />
-                  {foodItem !== [] ? (
+                  {foodItem.length !== 0 ? (
                     foodItem
                       .filter(
                         (item) =>
@@ -211,10 +207,11 @@ export default function Home() {
               );
             })
           ) : (
-            <div>"""""""""""</div>
+            <div>No categories available</div>
           )}
         </div>
-      }
+      )}
+
       <div>
         <Footer />
       </div>
