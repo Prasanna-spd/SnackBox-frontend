@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../Navbar";
 import { BASE_URL } from "../../services/helper";
+import { toast } from "react-hot-toast";
 
 export default function Signup() {
   let navigate = useNavigate();
@@ -37,11 +38,12 @@ export default function Signup() {
     // console.log(data);
     if (!data.success) {
       alert("Enter Valid Credentials");
+      // toast.error(data.message);
     } else {
+      toast.success(data.message);
       navigate("/login");
     }
   };
-  // console.log(credentials);
 
   return (
     <>

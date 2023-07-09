@@ -4,6 +4,7 @@ import { useCart } from "./contextReducer";
 import Modal from "../Modal";
 import Cart from "./screens/cart";
 import { BASE_URL } from "../services/helper";
+import { toast } from "react-hot-toast";
 
 export default function Navbar({ allowHim }) {
   let data = useCart();
@@ -16,6 +17,7 @@ export default function Navbar({ allowHim }) {
     localStorage.removeItem("sessionId");
     window.location.href = `${BASE_URL}/auth/logout`;
     navigate("/login");
+    toast.success("Logged Out Successfully.");
   };
 
   return (
@@ -59,7 +61,7 @@ export default function Navbar({ allowHim }) {
                   className="nav-link active fs-5"
                   aria-current="page"
                   to="/myOrder"
-                  style={{ color: "#198754", fontWeight: "lighter" }}
+                  style={{ color: "white", fontWeight: "lighter" }}
                 >
                   MyOrders
                 </Link>

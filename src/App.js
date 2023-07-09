@@ -1,5 +1,6 @@
 import "./App.css";
 import { CartProvider } from "./components/contextReducer";
+import { Toaster } from "react-hot-toast";
 import Home from "./components/screens/home";
 import Login from "./components/screens/login";
 import MyOrder from "./components/screens/myOrder";
@@ -20,6 +21,7 @@ function App() {
             <Route exact path="/timeline" element={<Timeline />} />
           </Routes>
         </div>
+        <Toaster />
       </Router>
     </CartProvider>
   );

@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useDispatchCart, useCart } from "./contextReducer";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-hot-toast";
 
 export default function Body(props) {
   const dispatch = useDispatchCart();
@@ -37,6 +38,7 @@ export default function Body(props) {
       !localStorage.getItem("sessionId")
     ) {
       navigate("/login");
+      toast.error("Please Login !");
     } else {
       let food = [];
       for (const item of data) {
@@ -57,7 +59,7 @@ export default function Body(props) {
             qty: qty,
           });
           // console.log(food);
-          return;
+          return toast.success("Item Updated");
         } else if (food.size !== size) {
           await dispatch({
             type: "ADD",
@@ -68,7 +70,7 @@ export default function Body(props) {
             size: size,
           });
 
-          return;
+          return toast.success("Item Added");
         }
         return;
       }
@@ -81,6 +83,7 @@ export default function Body(props) {
         qty: qty,
         size: size,
       });
+      return toast.success("Item Added");
     }
   };
 

@@ -2,6 +2,7 @@ import React from "react";
 import { useCart, useDispatchCart } from "../contextReducer";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { BASE_URL } from "../../services/helper";
+import { toast } from "react-hot-toast";
 
 export default function Cart() {
   let data = useCart();
@@ -30,9 +31,16 @@ export default function Cart() {
         order_date: new Date().toDateString(),
       }),
     });
+
+    const responseData = await response.json();
     // console.log("Order Response:", response);
     if (response.status === 200) {
+      // console.log(responseData);
       dispatch({ type: "DROP" });
+      toast.success(responseData.message);
+      // } else {
+      //   console.log(responseData);
+      //   toast.error(responseData.message);
     }
   };
 

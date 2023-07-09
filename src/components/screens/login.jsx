@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../Navbar";
 import { BASE_URL } from "../../services/helper";
+import { toast } from "react-hot-toast";
 
 export default function Login() {
   const [credentials, setCredentials] = useState({
@@ -30,10 +31,14 @@ export default function Login() {
     const data = await response.json();
 
     if (!data.success) {
-      alert("Enter Valid Credentials");
+      // console.log(data);
+      // alert("Enter Valid Credentials");
+      toast.error(data.errors);
     } else if (data.success) {
+      // console.log(data);
       localStorage.setItem("userEmail", credentials.email);
       localStorage.setItem("authToken", data.authToken);
+      toast.success(data.message);
       navigate("/");
     }
   };
