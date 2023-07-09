@@ -29,20 +29,18 @@ export default function Login() {
 
     const data = await response.json();
 
-    // console.log(data);
     if (!data.success) {
       alert("Enter Valid Credentials");
     } else if (data.success) {
       localStorage.setItem("userEmail", credentials.email);
       localStorage.setItem("authToken", data.authToken);
-      // console.log(localStorage.getItem("authToken"));
       navigate("/");
     }
   };
 
   return (
     <div>
-      <div className="navbaaar">
+      <div className="navbaaar navbar-additional">
         <Navbar />
       </div>
       <div className="container">

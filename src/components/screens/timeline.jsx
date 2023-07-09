@@ -41,7 +41,7 @@ export class Timeline extends Component {
 
     return (
       <>
-        <div>
+        <div className="navbaaar navbar-additional">
           <Navbar />
         </div>
         <div className="wrapper">

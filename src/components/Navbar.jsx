@@ -10,13 +10,6 @@ export default function Navbar({ allowHim }) {
   const [cartView, setcartView] = useState();
   const navigate = useNavigate();
 
-  // const handleLogout = () => {
-  //   localStorage.removeItem("authToken");
-  //   localStorage.removeItem("userEmail");
-  //   localStorage.removeItem("sessionId");
-  //   document.cookie = "session; path=/;";
-  //   navigate("/login");
-  // };
   const handleLogout = () => {
     localStorage.removeItem("authToken");
     localStorage.removeItem("userEmail");
@@ -27,17 +20,14 @@ export default function Navbar({ allowHim }) {
 
   return (
     <div>
-      <nav
-        className="navbar navbar-expand-lg "
-        style={{ "background-color": "#414345" }}
-      >
+      <nav className="navbar navbar-expand-lg ">
         <div className="container-fluid ">
           <Link
             className="navbar-brand fs-3 fst-italic"
-            style={{ color: "#198754" }}
             to="/"
+            style={{ color: "white", fontWeight: "lighter" }}
           >
-            Eat N Drink
+            Snack-Box
           </Link>
           <button
             className="navbar-toggler"
@@ -51,13 +41,13 @@ export default function Navbar({ allowHim }) {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse " id="navbarNavDropdown">
-            <ul className="navbar-nav me-auto ">
+            <ul className="navbar-nav me-auto " style={{ margin: "0.5rem" }}>
               <li className="nav-item">
                 <Link
                   className="nav-link active fs-5"
                   aria-current="page"
                   to="/"
-                  style={{ color: "#198754" }}
+                  style={{ color: "white", fontWeight: "lighter" }}
                 >
                   Home
                 </Link>
@@ -69,7 +59,7 @@ export default function Navbar({ allowHim }) {
                   className="nav-link active fs-5"
                   aria-current="page"
                   to="/myOrder"
-                  style={{ color: "#198754" }}
+                  style={{ color: "#198754", fontWeight: "lighter" }}
                 >
                   MyOrders
                 </Link>
@@ -80,7 +70,7 @@ export default function Navbar({ allowHim }) {
 
             {!localStorage.getItem("authToken") &&
             !localStorage.getItem("sessionId") ? (
-              <div className="d-flex">
+              <div className="d-flex" style={{ margin: "0.5rem" }}>
                 <Link
                   className="btn bg-white text-success mx-1"
                   to="/createUser"

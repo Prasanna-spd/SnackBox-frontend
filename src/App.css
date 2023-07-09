@@ -41,19 +41,116 @@
 /* -------------------------------------------------------------------- */
 /* -------------------------------------------------------------------- */
 /* -------------------------------------------------------------------- */
-.carousel-item {
+/* .carousel-item {
   height: 100%;
   width: 100%;
+} */
+
+/* .carousel-item > img {
+  height: 100%;
+  width: 100%;
+  object-fit: fill;
+} */
+
+.main-image {
+  height: 37rem;
 }
 
-.carousel-item > img {
-  /* height: 100%; */
+.main-image > img {
   width: 100%;
-  object-fit: contain;
+  height: 100%;
+  /* margin: 0 auto; */
+  object-fit: cover;
+}
+
+.text-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+}
+
+.slanted-text {
+  font-family: "Arial", sans-serif;
+  font-size: 80px;
+  font-style: italic;
+  transform: skew(-10deg);
+}
+
+.spread-text {
+  font-family: "Arial", sans-serif;
+  font-weight: lighter;
+  font-size: 24px;
+  letter-spacing: 4px;
 }
 
 .navbaaar {
+  width: 100%;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar-additional {
+  background-color: rgb(144, 145, 146);
   position: sticky;
   top: 0;
   z-index: 100;
+}
+
+.searchbar-overlay {
+  position: absolute;
+  top: 83%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  /* color: white;
+  text-align: center; */
+}
+
+/* CSS Styles */
+input.form-control {
+  border: 2px solid #ccc;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
+  padding: 8px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input.form-control:focus {
+  border-color: #8d1b3d;
+  outline: none;
+  box-shadow: 0 0 8px rgba(141, 27, 61, 0.4);
+}
+
+input.form-control:hover {
+  border-color: #8d1b3d;
+}
+
+button.navbar-toggler {
+  padding: 8px 12px;
+  background-color: rgb(168, 120, 43);
+  border: 2px solid #e4ebe8;
+  border-radius: 4px;
+  color: #42be84;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+button.navbar-toggler:hover {
+  background-color: rgb(168, 120, 43);
+  color: #fff;
+}
+
+@media (max-width: 767px) {
+  div.collapse.navbar-collapse {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  div.collapse.navbar-collapse {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
 }
